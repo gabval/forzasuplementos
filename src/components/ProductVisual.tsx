@@ -41,15 +41,25 @@ export const ProductVisual: React.FC<ProductVisualProps> = ({ product, className
     <div className={`relative w-full aspect-square flex items-center justify-center p-4 overflow-hidden rounded-2xl bg-gradient-to-b from-zinc-800/40 via-zinc-900/60 to-zinc-950/80 group-hover:from-zinc-800/60 transition-all duration-300 ${className}`}>
       {/* Background ambient glow */}
       <div
-        className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity blur-2xl rounded-full"
+        className="absolute inset-0 opacity-20 group-hover:opacity-45 transition-opacity blur-2xl rounded-full"
         style={{ background: `radial-gradient(circle, ${primaryColor} 0%, transparent 70%)` }}
       />
 
-      <svg
-        viewBox="0 0 200 200"
-        className="w-4/5 h-4/5 drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)] transition-transform duration-300 group-hover:scale-105"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      {product.imagen ? (
+        <div className="relative w-full h-full flex items-center justify-center p-2 z-10">
+          <img
+            src={product.imagen}
+            alt={`${product.nombre} ${product.marca}`}
+            className="max-w-full max-h-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)] transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <svg
+          viewBox="0 0 200 200"
+          className="w-4/5 h-4/5 drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)] transition-transform duration-300 group-hover:scale-105"
+          xmlns="http://www.w3.org/2000/svg"
+        >
         <defs>
           <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#27272a" />
@@ -261,6 +271,7 @@ export const ProductVisual: React.FC<ProductVisualProps> = ({ product, className
           </g>
         )}
       </svg>
+      )}
 
       {/* Presentation Badge overlay on bottom right */}
       <span className="absolute bottom-2.5 right-2.5 text-[11px] font-bold px-2 py-0.5 rounded-md bg-zinc-950/80 border border-zinc-800 text-zinc-300 backdrop-blur-sm">

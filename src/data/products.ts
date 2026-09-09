@@ -20,6 +20,7 @@ export const PRODUCTS: Product[] = [
     stock: true,
     categoria: "Creatinas",
     tagline: "100% Pura Micronizada",
+    imagen: "/products/creatina-star-300g.webp",
   },
   {
     id: 2,
