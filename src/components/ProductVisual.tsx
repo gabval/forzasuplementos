@@ -38,19 +38,19 @@ export const ProductVisual: React.FC<ProductVisualProps> = ({ product, className
   }
 
   return (
-    <div className={`relative w-full aspect-square flex items-center justify-center p-4 overflow-hidden rounded-2xl bg-gradient-to-b from-zinc-800/40 via-zinc-900/60 to-zinc-950/80 group-hover:from-zinc-800/60 transition-all duration-300 ${className}`}>
+    <div className={`relative w-full aspect-square flex items-center justify-center p-3 sm:p-3.5 overflow-hidden rounded-2xl bg-gradient-to-b from-zinc-800/40 via-zinc-900/60 to-zinc-950/80 group-hover:from-zinc-800/60 transition-all duration-300 ${className}`}>
       {/* Background ambient glow */}
       <div
-        className="absolute inset-0 opacity-20 group-hover:opacity-45 transition-opacity blur-2xl rounded-full"
+        className="absolute inset-0 opacity-25 group-hover:opacity-50 transition-opacity blur-2xl rounded-full"
         style={{ background: `radial-gradient(circle, ${primaryColor} 0%, transparent 70%)` }}
       />
 
       {product.imagen ? (
-        <div className="relative w-full h-full flex items-center justify-center p-2 z-10">
+        <div className="relative w-full h-full flex items-center justify-center z-10">
           <img
             src={product.imagen}
             alt={`${product.nombre} ${product.marca}`}
-            className="max-w-full max-h-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)] transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.85)] scale-110 transition-transform duration-300 group-hover:scale-120"
             loading="lazy"
           />
         </div>
@@ -272,11 +272,6 @@ export const ProductVisual: React.FC<ProductVisualProps> = ({ product, className
         )}
       </svg>
       )}
-
-      {/* Presentation Badge overlay on bottom right */}
-      <span className="absolute bottom-2.5 right-2.5 text-[11px] font-bold px-2 py-0.5 rounded-md bg-zinc-950/80 border border-zinc-800 text-zinc-300 backdrop-blur-sm">
-        {product.cantidad}
-      </span>
     </div>
   );
 };

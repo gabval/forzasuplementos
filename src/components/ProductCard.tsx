@@ -43,41 +43,37 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         !stock ? "opacity-50 select-none" : ""
       }`}
     >
-      {/* Top Badges (Stock / Promo / Category) */}
-      <div className="absolute top-6 left-6 right-6 z-10 flex items-center justify-between pointer-events-none">
-        {!stock ? (
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-black uppercase tracking-wider bg-rose-500/20 text-rose-400 border border-rose-500/30 backdrop-blur-md">
-            <Ban className="w-3 h-3" /> Sin Stock
-          </span>
-        ) : hasDiscount ? (
-          <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-black uppercase tracking-wider bg-lime-400 text-zinc-950 shadow-sm shadow-lime-400/30">
-            -{discountPercent}% OFF
-          </span>
-        ) : (
-          <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-zinc-800/80 text-zinc-400 border border-zinc-700/40 backdrop-blur-md">
-            {categoria}
-          </span>
-        )}
-      </div>
+      {/* Top Floating Status Badges (Only for Stock or Promo) */}
+      {(!stock || hasDiscount) && (
+        <div className="absolute top-5 left-5 right-5 z-20 flex items-center justify-between pointer-events-none">
+          {!stock ? (
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-black uppercase tracking-wider bg-rose-500/20 text-rose-400 border border-rose-500/30 backdrop-blur-md">
+              <Ban className="w-3 h-3" /> Sin Stock
+            </span>
+          ) : hasDiscount ? (
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-black uppercase tracking-wider bg-lime-400 text-zinc-950 shadow-sm shadow-lime-400/30">
+              -{discountPercent}% OFF
+            </span>
+          ) : null}
+        </div>
+      )}
 
-      {/* Product Image centered at the top with padding */}
-      <div className="pt-4 pb-2">
+      {/* Product Image centered at the top */}
+      <div className="pt-2 pb-2">
         <ProductVisual product={product} />
       </div>
 
       {/* Product Info */}
       <div className="flex-1 flex flex-col justify-between pt-2">
         <div>
-          {/* Brand */}
-          <div className="flex items-center justify-between gap-2 mb-1">
+          {/* Brand & Category tag */}
+          <div className="flex items-center justify-between gap-2 mb-1.5">
             <span className="text-zinc-400 uppercase text-xs font-bold tracking-wider">
               {marca}
             </span>
-            {tagline && (
-              <span className="text-[10px] text-zinc-500 truncate max-w-[120px]">
-                {tagline}
-              </span>
-            )}
+            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 bg-zinc-800/80 border border-zinc-700/50 px-2 py-0.5 rounded-md">
+              {categoria}
+            </span>
           </div>
 
           {/* Product Name */}
