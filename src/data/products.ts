@@ -32,6 +32,7 @@ export const PRODUCTS: Product[] = [
     stock: true,
     categoria: "Creatinas",
     tagline: "Máxima Fuerza y Resistencia",
+    imagen: "/products/creatina-gold-300g.webp",
   },
   {
     id: 3,
@@ -43,6 +44,7 @@ export const PRODUCTS: Product[] = [
     stock: true,
     categoria: "Creatinas",
     tagline: "Formato XL Económico",
+    imagen: "/products/creatina-star-1000g.webp",
   },
   {
     id: 4,
@@ -65,6 +67,7 @@ export const PRODUCTS: Product[] = [
     stock: true,
     categoria: "Creatinas",
     tagline: "Inicio y Mantenimiento",
+    imagen: "/products/creatina-onefit-200g.webp",
   },
   {
     id: 6,
@@ -76,6 +79,7 @@ export const PRODUCTS: Product[] = [
     stock: true,
     categoria: "Creatinas",
     tagline: "Rendimiento Atlético Diario",
+    imagen: "/products/creatina-onefit-500g.webp",
   },
   {
     id: 7,
@@ -87,6 +91,7 @@ export const PRODUCTS: Product[] = [
     stock: true,
     categoria: "Proteínas",
     tagline: "Plant-Based High Protein",
+    imagen: "/products/proteina-vegetal-gold-907g.webp",
   },
   {
     id: 8,
@@ -98,6 +103,7 @@ export const PRODUCTS: Product[] = [
     stock: true,
     categoria: "Proteínas",
     tagline: "Proteína + Colágeno Hidrolizado",
+    imagen: "/products/collagen-whey-star-907g.webp",
   },
   {
     id: 9,
@@ -109,6 +115,7 @@ export const PRODUCTS: Product[] = [
     stock: true,
     categoria: "Proteínas",
     tagline: "25g de Proteína por Scoop",
+    imagen: "/products/premium-whey-star-doypack-907g.webp",
   },
   {
     id: 10,
@@ -131,6 +138,7 @@ export const PRODUCTS: Product[] = [
     stock: true,
     categoria: "Proteínas",
     tagline: "Rápida Absorción BCAA",
+    imagen: "/products/premium-whey-onefit-907g.webp",
   },
   {
     id: 12,
