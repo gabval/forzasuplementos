@@ -39,19 +39,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div
-      className={`group relative flex flex-col justify-between rounded-2xl bg-zinc-900 border border-zinc-800 p-4 transition-all duration-300 hover:border-zinc-700 hover:shadow-xl hover:shadow-black/40 ${
+      className={`group relative flex flex-col justify-between rounded-2xl bg-zinc-900/90 border border-zinc-800/70 p-4 transition-all duration-300 hover:border-[#569f87]/40 hover:shadow-xl hover:shadow-black/50 ${
         !stock ? "opacity-50 select-none" : ""
       }`}
     >
       {/* Top Floating Status Badges (Only for Stock or Promo) */}
       {(!stock || hasDiscount) && (
-        <div className="absolute top-5 left-5 right-5 z-20 flex items-center justify-between pointer-events-none">
+        <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
           {!stock ? (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-black uppercase tracking-wider bg-rose-500/20 text-rose-400 border border-rose-500/30 backdrop-blur-md">
-              <Ban className="w-3 h-3" /> Sin Stock
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-zinc-800 text-zinc-400 border border-zinc-700/80 backdrop-blur-md">
+              <Ban className="w-3 h-3 text-rose-400" /> Sin Stock
             </span>
           ) : hasDiscount ? (
-            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-black uppercase tracking-wider bg-lime-400 text-zinc-950 shadow-sm shadow-lime-400/30">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider bg-[#569f87] text-white shadow-sm shadow-[#569f87]/30">
               -{discountPercent}% OFF
             </span>
           ) : null}
@@ -68,65 +68,70 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div>
           {/* Brand & Category tag */}
           <div className="flex items-center justify-between gap-2 mb-1.5">
-            <span className="text-zinc-400 uppercase text-xs font-bold tracking-wider">
+            <span className="text-zinc-400 uppercase text-xs font-semibold tracking-wider">
               {marca}
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 bg-zinc-800/80 border border-zinc-700/50 px-2 py-0.5 rounded-md">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 bg-zinc-800/80 border border-zinc-750 px-2 py-0.5 rounded-md">
               {categoria}
             </span>
           </div>
 
           {/* Product Name */}
-          <h3 className="text-white font-extrabold text-base leading-snug line-clamp-2 min-h-[44px]">
+          <h3 className="text-white font-bold text-base leading-snug line-clamp-2 min-h-[44px]">
             {nombre}
           </h3>
 
           {/* Quantity Badge */}
           <div className="mt-1.5 mb-3 flex items-center gap-2">
-            <span className="inline-block text-[11px] font-semibold text-zinc-300 bg-zinc-800/90 border border-zinc-700/60 px-2.5 py-0.5 rounded-md">
+            <span className="inline-block text-[11px] font-medium text-zinc-300 bg-zinc-800/60 border border-zinc-750 px-2.5 py-0.5 rounded-md">
               {cantidad}
             </span>
+            {tagline && (
+              <span className="text-[10px] text-zinc-500 truncate">
+                • {tagline}
+              </span>
+            )}
           </div>
         </div>
 
         {/* Pricing & CTA */}
-        <div className="mt-2 pt-3 border-t border-zinc-800/70">
+        <div className="mt-2 pt-3 border-t border-zinc-800/60">
           {/* Prices */}
           <div className="flex items-baseline gap-2 mb-3">
-            <span className="text-xl font-extrabold tracking-tight text-white">
+            <span className="text-xl font-bold tracking-tight text-white">
               {formatPriceARS(currentPrice)}
             </span>
             {hasDiscount && (
-              <span className="text-sm font-semibold text-zinc-500 line-through">
+              <span className="text-sm font-medium text-zinc-500 line-through">
                 {formatPriceARS(precio)}
               </span>
             )}
           </div>
 
-          {/* Full-width Add to Cart Button */}
+          {/* Minimalist Add to Cart Button */}
           <button
             type="button"
             onClick={handleAddToCart}
             disabled={!stock}
-            className={`w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+            className={`w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
               !stock
                 ? "bg-zinc-800 text-zinc-500 cursor-not-allowed"
                 : justAdded
-                ? "bg-lime-400 text-zinc-950 shadow-md shadow-lime-400/20 scale-[0.98]"
-                : "bg-zinc-800 hover:bg-lime-400 hover:text-zinc-950 text-white active:scale-[0.98]"
+                ? "bg-[#569f87] text-white shadow-md shadow-[#569f87]/20 scale-[0.98]"
+                : "bg-zinc-800 hover:bg-[#569f87] text-zinc-200 hover:text-white active:scale-[0.98]"
             }`}
           >
             {!stock ? (
               <>
-                <Ban className="w-4 h-4" /> Sin Stock
+                <Ban className="w-3.5 h-3.5" /> Sin Stock
               </>
             ) : justAdded ? (
               <>
-                <Check className="w-4 h-4 text-zinc-950 stroke-[3]" /> ¡Agregado!
+                <Check className="w-4 h-4 text-white stroke-[3]" /> ¡Agregado!
               </>
             ) : (
               <>
-                <ShoppingCart className="w-4 h-4" /> + Agregar al Carrito
+                <ShoppingCart className="w-3.5 h-3.5" /> + Agregar al Carrito
               </>
             )}
           </button>

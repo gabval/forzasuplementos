@@ -76,15 +76,15 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-lime-400 mb-2">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#569f87] mb-2">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Catálogo Oficial</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white">
             Nuestros Suplementos
           </h2>
-          <p className="text-sm text-zinc-400 mt-1">
-            Filtra por categoría o busca tu marca favorita. Precios actualizados en pesos argentinos (ARS).
+          <p className="text-xs sm:text-sm text-zinc-400 mt-1">
+            Filtra por categoría o busca tu producto favorito. Precios actualizados en pesos argentinos (ARS).
           </p>
         </div>
 
@@ -98,7 +98,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
               placeholder="Buscar producto, marca..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-900/80 border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#569f87] focus:ring-1 focus:ring-[#569f87] transition-all"
             />
             {searchQuery && (
               <button
@@ -116,7 +116,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="appearance-none w-full sm:w-auto px-4 py-2.5 pr-8 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-bold text-zinc-300 uppercase tracking-wider focus:outline-none focus:border-lime-400 cursor-pointer"
+              className="appearance-none w-full sm:w-auto px-4 py-2.5 pr-8 rounded-xl bg-zinc-900/80 border border-zinc-800 text-xs font-bold text-zinc-300 uppercase tracking-wider focus:outline-none focus:border-[#569f87] cursor-pointer"
             >
               <option value="featured">Destacados</option>
               <option value="price-asc">Precio: Menor a Mayor</option>
@@ -145,18 +145,18 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
         {selectedCategory !== "Todos" && (
           <button
             onClick={() => setSelectedCategory("Todos")}
-            className="text-lime-400 hover:underline font-semibold"
+            className="text-[#569f87] hover:underline font-semibold"
           >
             Limpiar filtro de categoría
           </button>
         )}
       </div>
 
-      {/* Responsive Grid: 1 col móvil, 2-3 en tablet, 4 en desktop */}
+      {/* Responsive Grid */}
       {filteredProducts.length === 0 ? (
         <div className="py-16 text-center rounded-2xl bg-zinc-900/50 border border-zinc-800/80 p-8">
           <PackageX className="w-12 h-12 text-zinc-600 mx-auto mb-3" />
-          <h3 className="text-lg font-black uppercase text-white">
+          <h3 className="text-lg font-bold uppercase text-white">
             No se encontraron productos
           </h3>
           <p className="text-sm text-zinc-400 mt-1 max-w-sm mx-auto">
@@ -167,7 +167,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
               setSearchQuery("");
               setSelectedCategory("Todos");
             }}
-            className="mt-5 px-5 py-2.5 rounded-xl bg-lime-400 text-zinc-950 font-black text-xs uppercase tracking-wider hover:bg-lime-300 transition-colors"
+            className="mt-5 px-5 py-2.5 rounded-xl bg-[#569f87] text-white font-bold text-xs uppercase tracking-wider hover:bg-[#4a8f79] transition-colors"
           >
             Ver todos los productos
           </button>

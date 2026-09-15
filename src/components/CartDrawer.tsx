@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { formatPriceARS } from "@/utils/formatters";
 import { generateWhatsAppOrderUrl } from "@/utils/whatsapp";
@@ -76,16 +77,21 @@ export const CartDrawer: React.FC = () => {
         aria-label="Carrito de compras"
       >
         {/* Drawer Header */}
-        <div className="p-5 border-b border-zinc-800 flex items-center justify-between bg-zinc-950/80">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-lime-400">
-              <ShoppingCart className="w-5 h-5" />
+        <div className="p-5 border-b border-zinc-850 flex items-center justify-between bg-zinc-950/90">
+          <div className="flex items-center gap-3">
+            <div className="relative w-9 h-9 rounded-full overflow-hidden border border-zinc-700/80 shadow-sm shrink-0">
+              <Image
+                src="/logo.webp"
+                alt={STORE_CONFIG.name}
+                fill
+                className="object-cover"
+              />
             </div>
             <div>
-              <h2 className="text-lg font-black uppercase tracking-tight text-white flex items-center gap-2">
+              <h2 className="text-base sm:text-lg font-bold uppercase tracking-tight text-white flex items-center gap-2">
                 Tu Carrito
-                <span className="text-xs font-bold text-lime-400 bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded-full">
-                  {totalItems} {totalItems === 1 ? "item" : "items"}
+                <span className="text-[11px] font-bold text-white bg-[#569f87] px-2 py-0.5 rounded-full">
+                  {totalItems}
                 </span>
               </h2>
             </div>
@@ -102,31 +108,29 @@ export const CartDrawer: React.FC = () => {
         </div>
 
         {/* Free Shipping / Trust Reminder */}
-        <div className="px-5 py-2.5 bg-zinc-900/60 border-b border-zinc-800/80 flex items-center gap-2 text-xs text-zinc-300">
-          <Truck className="w-4 h-4 text-lime-400 shrink-0" />
+        <div className="px-5 py-2.5 bg-zinc-900/40 border-b border-zinc-850 flex items-center gap-2 text-xs text-zinc-300">
+          <Truck className="w-4 h-4 text-[#569f87] shrink-0" />
           <span>
             {subtotal >= STORE_CONFIG.shippingThresholdFree ? (
-              <strong className="text-lime-400">¡Genial! Calificas para beneficios en tu envío.</strong>
+              <strong className="text-[#569f87]">¡Calificas para beneficios en tu envío!</strong>
             ) : (
-              <>
-                Despachamos tu pedido hoy a todo el país vía encomienda o correo.
-              </>
+              <>Despacho rápido a todo el país vía correo o encomienda.</>
             )}
           </span>
         </div>
 
         {/* Drawer Content / Product List */}
-        <div className="flex-1 overflow-y-auto p-5 space-y-4">
+        <div className="flex-1 overflow-y-auto p-5 space-y-3.5">
           {items.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center py-12 px-4">
-              <div className="w-20 h-20 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-600 mb-4">
-                <ShoppingCart className="w-10 h-10" />
+              <div className="w-16 h-16 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-600 mb-4">
+                <ShoppingCart className="w-8 h-8" />
               </div>
-              <h3 className="text-lg font-black uppercase tracking-tight text-white">
+              <h3 className="text-base font-bold uppercase tracking-tight text-white">
                 Tu carrito está vacío
               </h3>
-              <p className="mt-1 text-sm text-zinc-400 max-w-xs">
-                Añade suplementos a tu pedido para alcanzar tus metas de entrenamiento.
+              <p className="mt-1 text-xs text-zinc-400 max-w-xs">
+                Explora nuestros suplementos y añade los productos para tu entrenamiento.
               </p>
               <button
                 type="button"
@@ -135,22 +139,22 @@ export const CartDrawer: React.FC = () => {
                   const el = document.getElementById("catalogo");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-lime-400 hover:bg-lime-300 text-zinc-950 font-black text-xs uppercase tracking-wider transition-colors cursor-pointer"
+                className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#569f87] hover:bg-[#4d8e78] text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
               >
-                <span>Ver Suplementos</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Ver Catálogo</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           ) : (
             <>
               <div className="flex items-center justify-between pb-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+                <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
                   Productos seleccionados
                 </span>
                 <button
                   type="button"
                   onClick={clearCart}
-                  className="text-[11px] font-semibold text-zinc-500 hover:text-rose-400 transition-colors cursor-pointer"
+                  className="text-[11px] font-medium text-zinc-500 hover:text-rose-400 transition-colors cursor-pointer"
                 >
                   Vaciar carrito
                 </button>
@@ -163,7 +167,7 @@ export const CartDrawer: React.FC = () => {
                 return (
                   <div
                     key={product.id}
-                    className="flex gap-3 p-3.5 rounded-2xl bg-zinc-900/90 border border-zinc-800 hover:border-zinc-700/80 transition-all"
+                    className="flex gap-3 p-3 rounded-2xl bg-zinc-900/70 border border-zinc-800/80 hover:border-zinc-700/80 transition-all"
                   >
                     {/* Small Product Visual */}
                     <div className="w-16 h-16 shrink-0 rounded-xl bg-zinc-950 border border-zinc-800 p-1 flex items-center justify-center overflow-hidden">
@@ -174,14 +178,14 @@ export const CartDrawer: React.FC = () => {
                     <div className="flex-1 min-w-0 flex flex-col justify-between">
                       <div className="flex items-start justify-between gap-2">
                         <div>
-                          <span className="text-[10px] font-black uppercase tracking-wider text-zinc-400 block">
+                          <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 block">
                             {product.marca}
                           </span>
                           <h4 className="text-xs font-bold text-white leading-tight line-clamp-1">
                             {product.nombre}
                           </h4>
-                          <span className="inline-block mt-0.5 text-[10px] font-semibold text-zinc-400">
-                            Presentación: {product.cantidad}
+                          <span className="inline-block mt-0.5 text-[10px] text-zinc-400">
+                            {product.cantidad}
                           </span>
                         </div>
 
@@ -223,7 +227,7 @@ export const CartDrawer: React.FC = () => {
 
                         {/* Total per row */}
                         <div className="text-right">
-                          <div className="text-xs font-black text-white">
+                          <div className="text-xs font-bold text-white">
                             {formatPriceARS(itemTotal)}
                           </div>
                           {quantity > 1 && (
@@ -243,7 +247,7 @@ export const CartDrawer: React.FC = () => {
 
         {/* Drawer Footer / Subtotal & WhatsApp Checkout */}
         {items.length > 0 && (
-          <div className="p-5 border-t border-zinc-800 bg-zinc-950/95 space-y-4">
+          <div className="p-5 border-t border-zinc-850 bg-zinc-950 space-y-4">
             {/* Subtotal calculation */}
             <div className="space-y-1.5">
               <div className="flex items-center justify-between text-xs text-zinc-400">
@@ -252,13 +256,13 @@ export const CartDrawer: React.FC = () => {
               </div>
               <div className="flex items-center justify-between text-xs text-zinc-400">
                 <span>Envío</span>
-                <span className="text-lime-400 font-semibold">A coordinar por WhatsApp</span>
+                <span className="text-[#569f87] font-medium">A coordinar por WhatsApp</span>
               </div>
-              <div className="pt-2 border-t border-zinc-800/80 flex items-baseline justify-between">
-                <span className="text-sm font-black uppercase tracking-wider text-white">
+              <div className="pt-2 border-t border-zinc-850 flex items-baseline justify-between">
+                <span className="text-sm font-bold uppercase tracking-wider text-white">
                   Total Estimado:
                 </span>
-                <span className="text-2xl font-black tracking-tight text-lime-400">
+                <span className="text-2xl font-black tracking-tight text-[#569f87]">
                   {formatPriceARS(subtotal)}
                 </span>
               </div>
@@ -269,15 +273,15 @@ export const CartDrawer: React.FC = () => {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-3 py-3.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-black text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/35 transition-all duration-200 cursor-pointer text-center"
+              className="w-full flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-[#25D366]/20 transition-all duration-200 cursor-pointer text-center"
             >
-              <MessageCircle className="w-5 h-5 fill-zinc-950 text-zinc-950" />
+              <MessageCircle className="w-5 h-5 fill-white text-white" />
               <span>Pedir por WhatsApp</span>
             </a>
 
-            <div className="flex items-center justify-center gap-1 text-[11px] text-zinc-500 text-center">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Coordinamos pago seguro y despacho inmediato</span>
+            <div className="flex items-center justify-center gap-1.5 text-[11px] text-zinc-500 text-center">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#569f87]" />
+              <span>Coordinamos pago y despacho directo</span>
             </div>
           </div>
         )}

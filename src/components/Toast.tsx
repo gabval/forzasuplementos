@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 import { formatPriceARS } from "@/utils/formatters";
-import { ShoppingCart, Check, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 export const Toast: React.FC = () => {
   const { lastAddedProduct, clearLastAdded, setIsCartOpen } = useCart();
@@ -23,13 +23,13 @@ export const Toast: React.FC = () => {
 
   return (
     <div className="fixed bottom-5 right-5 z-50 max-w-sm w-full animate-in slide-in-from-bottom-5 fade-in-0 duration-300">
-      <div className="p-4 rounded-2xl bg-zinc-900 border border-lime-400/40 shadow-2xl shadow-black/80 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-lime-400 text-zinc-950 flex items-center justify-center shrink-0 font-bold">
-          <Check className="w-5 h-5 stroke-[3]" />
+      <div className="p-3.5 rounded-2xl bg-zinc-900 border border-[#569f87]/40 shadow-2xl shadow-black/80 flex items-center gap-3">
+        <div className="w-9 h-9 rounded-xl bg-[#569f87] text-white flex items-center justify-center shrink-0 font-bold">
+          <Check className="w-5 h-5 stroke-[2.5]" />
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="text-[11px] font-black uppercase tracking-wider text-lime-400">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-[#569f87]">
             ¡Agregado al carrito!
           </div>
           <div className="text-xs font-bold text-white truncate">
@@ -46,7 +46,7 @@ export const Toast: React.FC = () => {
               clearLastAdded();
               setIsCartOpen(true);
             }}
-            className="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-lime-400 hover:text-zinc-950 text-xs font-bold text-white transition-colors cursor-pointer"
+            className="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-[#569f87] text-xs font-semibold text-white transition-colors cursor-pointer"
           >
             Ver
           </button>

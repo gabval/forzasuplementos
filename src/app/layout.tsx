@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   title: "FORZA SUPLEMENTOS | Potencia Tu Rendimiento - Tienda Oficial",
   description:
     "Tienda online de suplementación deportiva de alto rendimiento: creatinas micronizadas, whey protein, pre-entrenos, colágeno y accesorios. Envíos a todo el país y checkout directo por WhatsApp.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/logo.webp",
+  },
   keywords: [
     "suplementos deportivos",
     "creatina micronizada",
@@ -37,6 +41,7 @@ export const metadata: Metadata = {
       "Catálogo oficial de suplementos deportivos: Creatinas, Proteínas, Pre-entrenos y Salud. Comprá directo por WhatsApp con envío a todo el país.",
     type: "website",
     locale: "es_AR",
+    images: ["/logo.webp"],
   },
 };
 
@@ -53,7 +58,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${inter.variable} ${montserrat.variable} dark h-full`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col bg-zinc-950 text-zinc-100 antialiased selection:bg-lime-400 selection:text-zinc-950 font-sans" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-zinc-950 text-zinc-100 antialiased selection:bg-[#569f87] selection:text-white font-sans" suppressHydrationWarning>
         <CartProvider>
           {children}
         </CartProvider>
